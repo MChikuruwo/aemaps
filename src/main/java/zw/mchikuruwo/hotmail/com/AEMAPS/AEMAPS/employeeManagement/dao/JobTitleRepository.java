@@ -2,9 +2,10 @@ package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import zw.co.stewardbank.hrautomationplatform.models.BusinessUnit;
-import zw.co.stewardbank.hrautomationplatform.models.Department;
-import zw.co.stewardbank.hrautomationplatform.models.JobTitle;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.BusinessUnit;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Department;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.JobTitle;
+
 
 import java.util.List;
 

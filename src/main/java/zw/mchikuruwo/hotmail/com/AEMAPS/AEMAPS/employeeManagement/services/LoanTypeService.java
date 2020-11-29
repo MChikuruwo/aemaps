@@ -1,6 +1,7 @@
 package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services;
 
-import zw.co.stewardbank.hrautomationplatform.models.LoanType;
+
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.LoanType;
 
 import java.util.List;
 

@@ -7,6 +7,7 @@
     <property name="connection.url">jdbc:mysql://localhost:3306/a_e_m_a_p_s</property>
     <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
     <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.EmployeeEntity"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.UserEntity"/>
       <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 

@@ -3,8 +3,9 @@ package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import zw.co.stewardbank.hrautomationplatform.dao.EmployeeStatusRepository;
-import zw.co.stewardbank.hrautomationplatform.models.EmployeeStatus;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dao.EmployeeStatusRepository;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.EmployeeStatus;
+
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;

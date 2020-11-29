@@ -2,8 +2,9 @@ package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import zw.co.stewardbank.hrautomationplatform.dao.LoanTypeRepository;
-import zw.co.stewardbank.hrautomationplatform.models.LoanType;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dao.LoanTypeRepository;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.LoanType;
+
 
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;

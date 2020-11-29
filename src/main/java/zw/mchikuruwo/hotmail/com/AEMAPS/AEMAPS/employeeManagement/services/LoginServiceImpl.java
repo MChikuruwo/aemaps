@@ -2,9 +2,10 @@ package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import zw.co.stewardbank.hrautomationplatform.dao.LoginRepository;
-import zw.co.stewardbank.hrautomationplatform.models.Login;
-import zw.co.stewardbank.hrautomationplatform.models.User;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dao.LoginRepository;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Login;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.User;
+
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Date;

@@ -1,6 +1,5 @@
 package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto;
 
-import java.math.BigDecimal;
 
 public class UpdateEmployeeDto {
     private Long id;
@@ -11,9 +10,8 @@ public class UpdateEmployeeDto {
     private Object gender;
     private Object residentialStatus;
     private String address1;
-    private String address2;
-    private String address3;
-    private BigDecimal monthlyExpenses;
+    private Double monthlySalary;
+    private String accountNumber;
 
     public Long getId() {
         return id;
@@ -79,27 +77,19 @@ public class UpdateEmployeeDto {
         this.address1 = address1;
     }
 
-    public String getAddress2() {
-        return address2;
+    public Double getMonthlySalary() {
+        return monthlySalary;
     }
 
-    public void setAddress2(String address2) {
-        this.address2 = address2;
+    public void setMonthlySalary(Double monthlySalary) {
+        this.monthlySalary = monthlySalary;
     }
 
-    public String getAddress3() {
-        return address3;
+    public String getAccountNumber() {
+        return accountNumber;
     }
 
-    public void setAddress3(String address3) {
-        this.address3 = address3;
-    }
-
-    public BigDecimal getMonthlyExpenses() {
-        return monthlyExpenses;
-    }
-
-    public void setMonthlyExpenses(BigDecimal monthlyExpenses) {
-        this.monthlyExpenses = monthlyExpenses;
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
     }
 }

@@ -46,13 +46,5 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
         return null;
     }
 
-    /*@Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        Authentication authentication = new TokenAuthenticationService()
-                .getAuthentication((HttpServletRequest)servletRequest);
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        filterChain.doFilter(servletRequest,servletResponse);
-
-    }*/
 }

@@ -15,6 +15,7 @@ public class User {
     private String name;
     private String surname;
     private String emailAddress;
+    private String employeeCode;
     private String password;
     private Boolean isActive;
     private Timestamp dateCreated;
@@ -63,6 +64,17 @@ public class User {
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
+
+    @Basic
+    @Column(name = "employee_code")
+    public String getEmployeeCode() {
+        return employeeCode;
+    }
+
+    public void setEmployeeCode(String employeeCode) {
+        this.employeeCode = employeeCode;
+    }
+
 
     @Basic
     @Column(name = "password", nullable = false, length = 255)

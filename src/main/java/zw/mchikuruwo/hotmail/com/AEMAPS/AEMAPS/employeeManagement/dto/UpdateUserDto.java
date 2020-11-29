@@ -5,6 +5,7 @@ public class UpdateUserDto {
     private String name;
     private String surname;
     private String emailAddress;
+    private String employeeCode;
     private String password;
     private Boolean isActive;
 
@@ -46,6 +47,14 @@ public class UpdateUserDto {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmployeeCode() {
+        return employeeCode;
+    }
+
+    public void setEmployeeCode(String employeeCode) {
+        this.employeeCode = employeeCode;
     }
 
     public Boolean getActive() {

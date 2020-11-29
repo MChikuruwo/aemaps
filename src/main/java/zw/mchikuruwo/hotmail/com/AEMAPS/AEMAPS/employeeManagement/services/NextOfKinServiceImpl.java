@@ -3,9 +3,10 @@ package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import zw.co.stewardbank.hrautomationplatform.dao.NextOfKinRepository;
-import zw.co.stewardbank.hrautomationplatform.models.Employee;
-import zw.co.stewardbank.hrautomationplatform.models.NextOfKin;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dao.NextOfKinRepository;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Employee;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.NextOfKin;
+
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;

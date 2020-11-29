@@ -14,8 +14,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import zw.co.stewardbank.hrautomationplatform.handler.ExceptionHandlerFilter;
-import zw.co.stewardbank.hrautomationplatform.services.UserService;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.handler.ExceptionHandlerFilter;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.UserService;
+
 
 @Configuration
 @EnableWebSecurity

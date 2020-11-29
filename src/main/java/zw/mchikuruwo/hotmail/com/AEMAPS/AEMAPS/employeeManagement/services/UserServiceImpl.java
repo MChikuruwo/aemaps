@@ -8,11 +8,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import zw.co.stewardbank.hrautomationplatform.dao.RoleRepository;
-import zw.co.stewardbank.hrautomationplatform.dao.UserRepository;
-import zw.co.stewardbank.hrautomationplatform.exceptions.UserNotFoundException;
-import zw.co.stewardbank.hrautomationplatform.models.MyUserPrincipal;
-import zw.co.stewardbank.hrautomationplatform.models.User;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dao.RoleRepository;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dao.UserRepository;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.exceptions.UserNotFoundException;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.MyUserPrincipal;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.User;
+
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -88,6 +89,22 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         if (user == null){
             //Display an error that the user with the email address was not found
             throw new EntityNotFoundException("User with email: " + emailAddress + " not found");
+        }
+        //Check user entered password if it matches hashed password in database
+        if (!passwordEncoder.matches(password, user.getPassword())){
+            throw new BadCredentialsException("Incorrect password");
+        }
+        //Else return the user if found
+        return user;
+    }
+
+     @Override
+    public     User empCodeAuth(String employeeCode, String password) throws Exception{
+        //First get the user by email to check if the user exists
+        User user = userRepository.findUserByEmployeeCode(employeeCode);
+        if (user == null){
+            //Display an error that the user with the email address was not found
+            throw new EntityNotFoundException("User with employeeCode: " + employeeCode + " not found");
         }
         //Check user entered password if it matches hashed password in database
         if (!passwordEncoder.matches(password, user.getPassword())){

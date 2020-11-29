@@ -20,7 +20,7 @@ public class SwaggerConfig {
     public Docket api(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.mchikuruwo@hotmail.a_e_m_a_p_s.api"))
+                .apis(RequestHandlerSelectors.basePackage("zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());
