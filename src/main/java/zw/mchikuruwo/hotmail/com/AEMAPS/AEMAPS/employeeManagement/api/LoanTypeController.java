@@ -7,11 +7,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import zw.co.stewardbank.hrautomationplatform.dto.AddLoanTypeDto;
-import zw.co.stewardbank.hrautomationplatform.dto.UpdateLoanTypeDto;
-import zw.co.stewardbank.hrautomationplatform.models.LoanType;
-import zw.co.stewardbank.hrautomationplatform.models.api.ApiResponse;
-import zw.co.stewardbank.hrautomationplatform.services.LoanTypeService;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.AddLoanTypeDto;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.UpdateLoanTypeDto;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.LoanType;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.api.ApiResponse;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.LoanTypeService;
+
 
 @RestController
 @CrossOrigin

@@ -17,5 +17,4 @@ public interface JobTitleService {
     List<JobTitle> findAllByBusinessUnit(BusinessUnit businessUnit);
     List<JobTitle> findAllByDepartment(Department department);
     List<JobTitle> findAllByBusinessUnitAndDepartment(BusinessUnit businessUnit, Department department);
-    List<JobTitle> findAllByReportingTo(Integer reportingToId);
 }

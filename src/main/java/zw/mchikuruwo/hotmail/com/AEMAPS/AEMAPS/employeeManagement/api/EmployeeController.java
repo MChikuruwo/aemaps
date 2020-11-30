@@ -6,15 +6,16 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import zw.co.stewardbank.hrautomationplatform.dto.AddEmployeeDto;
-import zw.co.stewardbank.hrautomationplatform.dto.UpdateEmployeeDto;
-import zw.co.stewardbank.hrautomationplatform.models.Employee;
-import zw.co.stewardbank.hrautomationplatform.models.JobTitle;
-import zw.co.stewardbank.hrautomationplatform.models.api.ApiResponse;
-import zw.co.stewardbank.hrautomationplatform.services.EmployeeService;
-import zw.co.stewardbank.hrautomationplatform.services.EmployeeStatusService;
-import zw.co.stewardbank.hrautomationplatform.services.JobTitleService;
-import zw.co.stewardbank.hrautomationplatform.services.UserService;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.AddEmployeeDto;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.UpdateEmployeeDto;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Employee;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.JobTitle;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.api.ApiResponse;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.EmployeeService;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.EmployeeStatusService;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.JobTitleService;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.UserService;
+
 
 @RestController
 @CrossOrigin
@@ -106,7 +107,7 @@ public class EmployeeController {
         employee.setJobTitle(jobTitleService.getOne(titleId));
 
 
-        return new ApiResponse(201, "SUCCESS", employeeService.add(employee));
+        return new ApiResponse(200, "SUCCESS", employeeService.add(employee));
     }
 
     @PutMapping("/edit/{employee-status-id}/{job-title-id}")

@@ -100,15 +100,7 @@ public class JobTitleServiceImpl implements JobTitleService {
         return jobTitles;
     }
 
-    @Override
-    public List<JobTitle> findAllByReportingTo(Integer reportingToId) {
-        List<JobTitle> jobTitles = jobTitleRepository.findAllByReportingTo(reportingToId);
-        if (jobTitles.isEmpty()){
-            throw new EntityNotFoundException("Job titles reporting to "
-                    .concat(jobTitleRepository.getOne(Long.valueOf(reportingToId)).getTitleName()).concat(" not found"));
-        }
-        return jobTitles;
-    }
+
 
 
 }

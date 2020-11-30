@@ -6,11 +6,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import zw.co.stewardbank.hrautomationplatform.dto.AddBusinessUnitDto;
-import zw.co.stewardbank.hrautomationplatform.dto.UpdateBusinessUnitDto;
-import zw.co.stewardbank.hrautomationplatform.models.BusinessUnit;
-import zw.co.stewardbank.hrautomationplatform.models.api.ApiResponse;
-import zw.co.stewardbank.hrautomationplatform.services.BusinessUnitService;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.AddBusinessUnitDto;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.UpdateBusinessUnitDto;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.BusinessUnit;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.api.ApiResponse;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.BusinessUnitService;
+
 
 @RestController
 @CrossOrigin

@@ -6,15 +6,16 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import zw.co.stewardbank.hrautomationplatform.dto.AddJobTitleDto;
-import zw.co.stewardbank.hrautomationplatform.dto.UpdateJobTitleDto;
-import zw.co.stewardbank.hrautomationplatform.models.BusinessUnit;
-import zw.co.stewardbank.hrautomationplatform.models.Department;
-import zw.co.stewardbank.hrautomationplatform.models.JobTitle;
-import zw.co.stewardbank.hrautomationplatform.models.api.ApiResponse;
-import zw.co.stewardbank.hrautomationplatform.services.BusinessUnitService;
-import zw.co.stewardbank.hrautomationplatform.services.DepartmentService;
-import zw.co.stewardbank.hrautomationplatform.services.JobTitleService;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.AddJobTitleDto;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.UpdateJobTitleDto;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.BusinessUnit;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Department;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.JobTitle;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.api.ApiResponse;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.BusinessUnitService;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.DepartmentService;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.JobTitleService;
+
 
 @RestController
 @CrossOrigin
@@ -53,20 +54,18 @@ public class JobTitleController {
         return new ApiResponse(200, "SUCCESS", jobTitleService.delete(id));
     }
 
-    @PostMapping("/add/{reportingToId}/{business-unit-id}/{department-id}")
+    @PostMapping("/add/{business-unit-id}/{department-id}")
     @ApiOperation(value = "Add a new job title. Takes reportingToId, businessUnitId and departmentId as path variables",
             response = ApiResponse.class)
     public ApiResponse addJobTitle(@RequestBody AddJobTitleDto jobTitleDto,
-                                   @PathVariable("reportingToId") Integer reportingToId,
                                    @PathVariable("business-unit-id") Integer businessUnitId,
                                    @PathVariable("department-id") Integer departmentId){
 
         JobTitle jobTitle = modelMapper.map(jobTitleDto, JobTitle.class);
         jobTitle.setBusinessUnit(businessUnitService.getOne(businessUnitId));
-        jobTitle.setReportingTo(jobTitleService.getOne(Long.valueOf(reportingToId)).getId());
         jobTitle.setDepartment(departmentService.getOne(departmentId));
 
-        return new ApiResponse(201, "SUCCESS", jobTitleService.add(jobTitle));
+        return new ApiResponse(200, "SUCCESS", jobTitleService.add(jobTitle));
     }
 
     @PutMapping("/edit")
@@ -109,9 +108,5 @@ public class JobTitleController {
 
     }
 
-    @GetMapping("/reporting-to/{reporting-id}")
-    @ApiOperation(value = "Get job titles reporting to a specific job title. Takes reportingToId as a path variable", response = ApiResponse.class)
-    public ApiResponse getJobTitlesReportingTo(@PathVariable("reporting-id") Integer id){
-        return new ApiResponse(200, "SUCCESS", jobTitleService.findAllByReportingTo(id));
-    }
+
 }

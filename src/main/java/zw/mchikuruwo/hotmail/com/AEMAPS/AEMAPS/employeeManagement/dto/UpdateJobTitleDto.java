@@ -3,7 +3,6 @@ package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto;
 public class UpdateJobTitleDto {
     private Long id;
     private String titleName;
-    private Long reportingTo;
 
     public Long getId() {
         return id;
@@ -21,11 +20,5 @@ public class UpdateJobTitleDto {
         this.titleName = titleName;
     }
 
-    public Long getReportingTo() {
-        return reportingTo;
-    }
 
-    public void setReportingTo(Long reportingTo) {
-        this.reportingTo = reportingTo;
-    }
 }

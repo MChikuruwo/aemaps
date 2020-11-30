@@ -10,7 +10,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dao.RoleRepository;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dao.UserRepository;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.exceptions.EmailNotFoundException;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.exceptions.EmployeeCodeNotFoundException;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.exceptions.UserNotFoundException;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.exceptions.UsersNotAvailableException;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.MyUserPrincipal;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.User;
 
@@ -67,7 +70,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public List<User> getAll() {
         List<User> users = userRepository.findAll();
         if (users.isEmpty()){
-            throw new UserNotFoundException("Users not found");
+            throw new UsersNotAvailableException("Users not found");
         }
         return users;
     }
@@ -99,7 +102,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
      @Override
-    public     User empCodeAuth(String employeeCode, String password) throws Exception{
+    public User empCodeAuth(String employeeCode, String password) throws Exception{
         //First get the user by email to check if the user exists
         User user = userRepository.findUserByEmployeeCode(employeeCode);
         if (user == null){
@@ -118,7 +121,16 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public User findByEmailAddress(String emailAddress) {
         User user = userRepository.findUserByEmailAddress(emailAddress);
         if (user == null){
-            throw new EntityNotFoundException("User with the email " + emailAddress + " not found");
+            throw new EmailNotFoundException("User with the email " + emailAddress + " not found");
+        }
+        return user;
+    }
+
+    @Override
+    public User findByEmployeeCode(String employeeCode) {
+        User user = userRepository.findUserByEmployeeCode(employeeCode);
+        if (user == null){
+            throw new EmployeeCodeNotFoundException("User with the employeeCode " + employeeCode + " not found");
         }
         return user;
     }

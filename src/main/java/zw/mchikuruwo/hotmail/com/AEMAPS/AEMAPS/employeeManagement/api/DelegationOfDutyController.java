@@ -7,13 +7,14 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import zw.co.stewardbank.hrautomationplatform.dto.AddDelegationOfDutyDto;
-import zw.co.stewardbank.hrautomationplatform.dto.UpdateDelegationOfDutyDto;
-import zw.co.stewardbank.hrautomationplatform.models.DelegationOfDuty;
-import zw.co.stewardbank.hrautomationplatform.models.Employee;
-import zw.co.stewardbank.hrautomationplatform.models.api.ApiResponse;
-import zw.co.stewardbank.hrautomationplatform.services.DelegationOfDutyService;
-import zw.co.stewardbank.hrautomationplatform.services.EmployeeService;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.AddDelegationOfDutyDto;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.UpdateDelegationOfDutyDto;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.DelegationOfDuty;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Employee;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.api.ApiResponse;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.DelegationOfDutyService;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.EmployeeService;
+
 
 @RestController
 @CrossOrigin

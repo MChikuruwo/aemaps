@@ -7,15 +7,16 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import zw.co.stewardbank.hrautomationplatform.dto.AddSalaryAdvanceDto;
-import zw.co.stewardbank.hrautomationplatform.dto.UpdateSalaryAdvance;
-import zw.co.stewardbank.hrautomationplatform.models.Employee;
-import zw.co.stewardbank.hrautomationplatform.models.SalaryAdvance;
-import zw.co.stewardbank.hrautomationplatform.models.SalaryAdvanceApplication;
-import zw.co.stewardbank.hrautomationplatform.models.api.ApiResponse;
-import zw.co.stewardbank.hrautomationplatform.services.EmployeeService;
-import zw.co.stewardbank.hrautomationplatform.services.SalaryAdvanceApplicationService;
-import zw.co.stewardbank.hrautomationplatform.services.SalaryAdvanceService;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.AddSalaryAdvanceDto;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.UpdateSalaryAdvance;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Employee;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.SalaryAdvance;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.SalaryAdvanceApplication;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.api.ApiResponse;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.EmployeeService;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.SalaryAdvanceApplicationService;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.SalaryAdvanceService;
+
 
 @RestController
 @CrossOrigin
@@ -54,7 +55,7 @@ public class SalaryAdvanceController {
         return new ApiResponse(200, "SUCCESS", salaryAdvanceService.delete(id));
     }
 
-    @PostMapping("/add/{salary-advance-application-id}/{employee-id")
+    @PostMapping("/add/{salary-advance-application-id}/{employee-id}")
     @ApiOperation(value = "Add a new loan. Takes salaryAdvanceId and employee-id as path variables",
             response = ApiResponse.class)
     public ApiResponse addSalaryAdvance(@RequestBody AddSalaryAdvanceDto salaryAdvanceDto,
@@ -66,7 +67,7 @@ public class SalaryAdvanceController {
         salaryAdvance.setEmployee(employeeService.getOne(employeeId));
 
 
-        return new ApiResponse(201, "SUCCESS", salaryAdvanceService.add(salaryAdvance));
+        return new ApiResponse(200, "SUCCESS", salaryAdvanceService.add(salaryAdvance));
     }
 
     @PutMapping("/edit")
@@ -98,7 +99,7 @@ public class SalaryAdvanceController {
 
     @GetMapping("/by-salary-advance-application-and-employee/{salaryAdvance-id}/{employee-id}")
     @ApiOperation(value = "Get salary advances under a salary advance application and employee. Takes  salaryAdvanceApplicationId and employeeId as path variables", response = ApiResponse.class)
-    public ApiResponse getSalaryAdvanceByApplicationAndEmployee(@PathVariable("loanApplication-id") Long loanApplicationId,
+    public ApiResponse getSalaryAdvanceByApplicationAndEmployee(@PathVariable("salaryAdvance-id") Long loanApplicationId,
                                                                @PathVariable("employee-id") Long employeeId){
         SalaryAdvanceApplication salaryAdvanceApplication = salaryAdvanceApplicationService.getOne(loanApplicationId);
         Employee employee = employeeService.getOne(employeeId);

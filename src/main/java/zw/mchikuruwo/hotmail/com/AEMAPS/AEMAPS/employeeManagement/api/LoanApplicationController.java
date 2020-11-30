@@ -6,12 +6,14 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import zw.co.stewardbank.hrautomationplatform.dto.AddLoanApplicationDto;
-import zw.co.stewardbank.hrautomationplatform.models.Employee;
-import zw.co.stewardbank.hrautomationplatform.models.LoanApplication;
-import zw.co.stewardbank.hrautomationplatform.models.LoanType;
-import zw.co.stewardbank.hrautomationplatform.models.api.ApiResponse;
-import zw.co.stewardbank.hrautomationplatform.services.*;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.AddLoanApplicationDto;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Employee;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.LoanApplication;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.LoanType;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.api.ApiResponse;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.EmployeeService;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.LoanApplicationService;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.LoanTypeService;
 
 
 @RestController
@@ -82,7 +84,7 @@ public class LoanApplicationController {
         loanApplication.setEmployee(employeeService.getOne(employeeId));
         loanApplication.setHasBeenApproved(false);
 
-        return new ApiResponse(201, "SUCCESS", loanApplicationService.add(loanApplication));
+        return new ApiResponse(200, "SUCCESS", loanApplicationService.add(loanApplication));
     }
 
 

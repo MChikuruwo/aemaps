@@ -14,4 +14,5 @@ public interface UserService {
 
     User empCodeAuth(String employeeCode, String password) throws Exception;
     User findByEmailAddress(String emailAddress);
+    User findByEmployeeCode(String employeeCode);
 }

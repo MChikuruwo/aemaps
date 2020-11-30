@@ -6,15 +6,16 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import zw.co.stewardbank.hrautomationplatform.dto.AddLoanDto;
-import zw.co.stewardbank.hrautomationplatform.dto.UpdateLoanDto;
-import zw.co.stewardbank.hrautomationplatform.models.Employee;
-import zw.co.stewardbank.hrautomationplatform.models.Loan;
-import zw.co.stewardbank.hrautomationplatform.models.LoanApplication;
-import zw.co.stewardbank.hrautomationplatform.models.api.ApiResponse;
-import zw.co.stewardbank.hrautomationplatform.services.EmployeeService;
-import zw.co.stewardbank.hrautomationplatform.services.LoanApplicationService;
-import zw.co.stewardbank.hrautomationplatform.services.LoanService;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.AddLoanDto;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.UpdateLoanDto;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Employee;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Loan;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.LoanApplication;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.api.ApiResponse;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.EmployeeService;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.LoanApplicationService;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.LoanService;
+
 
 @RestController
 @CrossOrigin
@@ -65,7 +66,7 @@ public class LoanController {
       loan.setEmployee(employeeService.getOne(employeeId));
 
 
-        return new ApiResponse(201, "SUCCESS", loanService.add(loan));
+        return new ApiResponse(200, "SUCCESS", loanService.add(loan));
     }
 
     @PutMapping("/edit")

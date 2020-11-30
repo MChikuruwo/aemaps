@@ -12,7 +12,6 @@ import java.util.Objects;
 public class JobTitle {
     private Long id;
     private String titleName;
-    private Long reportingTo;
     private BusinessUnit businessUnit;
     private Department department;
     private Timestamp dateCreated;
@@ -69,15 +68,10 @@ public class JobTitle {
         JobTitle jobTitle = (JobTitle) o;
         return Objects.equals(id, jobTitle.id) &&
                 Objects.equals(titleName, jobTitle.titleName) &&
-                Objects.equals(reportingTo, jobTitle.reportingTo) &&
                 Objects.equals(dateCreated, jobTitle.dateCreated) &&
                 Objects.equals(dateUpdated, jobTitle.dateUpdated);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, titleName, reportingTo, dateCreated, dateUpdated);
-    }
 
     @ManyToOne
     @JoinColumn(name = "business_unit_id", referencedColumnName = "id", nullable = false)

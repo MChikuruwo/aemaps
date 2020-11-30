@@ -14,5 +14,4 @@ public interface JobTitleRepository extends JpaRepository<JobTitle, Long> {
     List<JobTitle> findAllByBusinessUnit(BusinessUnit businessUnit);
     List<JobTitle> findAllByDepartment(Department department);
     List<JobTitle> findAllByBusinessUnitAndDepartment(BusinessUnit businessUnit, Department department);
-    List<JobTitle> findAllByReportingTo(Integer reportingToId);
 }

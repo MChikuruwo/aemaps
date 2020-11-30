@@ -3,6 +3,7 @@ package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto;
 public class LoginDto {
     private String emailAddress;
     private String password;
+    private String employeeCode;
 
     public String getEmailAddress() {
         return emailAddress;
@@ -18,5 +19,13 @@ public class LoginDto {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmployeeCode() {
+        return employeeCode;
+    }
+
+    public void setEmployeeCode(String employeeCode) {
+        this.employeeCode = employeeCode;
     }
 }

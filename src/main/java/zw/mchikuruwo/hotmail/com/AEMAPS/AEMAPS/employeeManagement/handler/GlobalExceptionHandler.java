@@ -5,10 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import zw.co.stewardbank.hrautomationplatform.exceptions.InvalidOldPasswordException;
-import zw.co.stewardbank.hrautomationplatform.exceptions.InvalidTokenException;
-import zw.co.stewardbank.hrautomationplatform.exceptions.UserNotFoundException;
-import zw.co.stewardbank.hrautomationplatform.models.api.ApiResponse;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.exceptions.*;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.api.ApiResponse;
+
 
 import javax.persistence.EntityNotFoundException;
 
@@ -46,6 +45,26 @@ public class GlobalExceptionHandler {
         return new ApiResponse(400, e.getLocalizedMessage());
 
     }
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(EmailNotFoundException.class)
+    public ApiResponse handleEmailNotFoundException (EmailNotFoundException e) {
+        return new ApiResponse(400, e.getLocalizedMessage());
+
+    }
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(EmployeeCodeNotFoundException.class)
+    public ApiResponse handleEmployeeCodeNotFoundException (EmployeeCodeNotFoundException e) {
+        return new ApiResponse(400, e.getLocalizedMessage());
+
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(UsersNotAvailableException.class)
+    public ApiResponse handleUsersNotAvailableException (UsersNotAvailableException e) {
+        return new ApiResponse(400, e.getLocalizedMessage());
+
+    }
+
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(Exception.class)
