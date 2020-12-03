@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 29, 2020 at 09:20 AM
+-- Generation Time: Dec 03, 2020 at 04:45 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.1.32
 
@@ -139,6 +139,19 @@ INSERT INTO `activity_status` (`id`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `annual_activity_calendar`
+--
+
+CREATE TABLE `annual_activity_calendar` (
+  `id` bigint(11) NOT NULL,
+  `activity` varchar(255) NOT NULL,
+  `activity_day` date NOT NULL,
+  `date_updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `business_unit`
 --
 
@@ -146,6 +159,14 @@ CREATE TABLE `business_unit` (
   `id` int(11) NOT NULL,
   `business_unit` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `business_unit`
+--
+
+INSERT INTO `business_unit` (`id`, `business_unit`) VALUES
+(1, 'BULAWAYO CAMPUS'),
+(2, 'HARARE OFFICE');
 
 -- --------------------------------------------------------
 
@@ -175,6 +196,15 @@ CREATE TABLE `department` (
   `department` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `department`
+--
+
+INSERT INTO `department` (`id`, `department`) VALUES
+(1, 'COMPUTER SCIENCE'),
+(2, 'ENGINEERING'),
+(3, 'BUILT ENVIRONMENT');
+
 -- --------------------------------------------------------
 
 --
@@ -198,6 +228,13 @@ CREATE TABLE `employee` (
   `date_created` datetime NOT NULL DEFAULT current_timestamp(),
   `date_updated` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `employee`
+--
+
+INSERT INTO `employee` (`id`, `user_id`, `employment_status_id`, `job_title_id`, `employee_code`, `name`, `surname`, `gender`, `mobile_number`, `residential_status`, `address_1`, `monthly_salary`, `account_number`, `date_created`, `date_updated`) VALUES
+(1, 2, 1, 1, 'N0172516T', 'Nigel', 'Chikuruwo', 'M', NULL, 'PERMANENT', '669 LANCEWOOD ROAD, VENTERSBERG, SUNWAY CITY, RUWA', 20000, '90988-7654', '2020-12-03 09:21:12', '2020-12-03 09:21:12');
 
 -- --------------------------------------------------------
 
@@ -232,6 +269,21 @@ CREATE TABLE `job_title` (
   `date_created` datetime NOT NULL DEFAULT current_timestamp(),
   `date_updated` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `job_title`
+--
+
+INSERT INTO `job_title` (`id`, `business_unit_id`, `department_id`, `title_name`, `date_created`, `date_updated`) VALUES
+(1, 1, 1, 'LECTURER', '2020-12-03 07:09:13', '2020-12-03 07:09:13'),
+(2, 1, 1, 'TUTOR', '2020-12-03 07:09:24', '2020-12-03 07:09:24'),
+(3, 1, 1, 'EXAMINOR', '2020-12-03 07:09:37', '2020-12-03 07:09:37'),
+(4, 1, 2, 'EXAMINOR', '2020-12-03 07:12:26', '2020-12-03 07:12:26'),
+(5, 1, 2, 'LECTURER', '2020-12-03 07:12:35', '2020-12-03 07:12:35'),
+(6, 1, 2, 'TUTOR', '2020-12-03 07:12:42', '2020-12-03 07:12:42'),
+(7, 1, 3, 'LECTURER', '2020-12-03 07:12:53', '2020-12-03 07:12:53'),
+(8, 1, 3, 'TUTOR', '2020-12-03 07:13:00', '2020-12-03 07:13:00'),
+(9, 1, 3, 'EXAMINOR', '2020-12-03 07:13:07', '2020-12-03 07:13:07');
 
 -- --------------------------------------------------------
 
@@ -301,6 +353,17 @@ CREATE TABLE `login` (
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`id`, `user_id`, `date`) VALUES
+(1, 1, '2020-12-02 12:20:29'),
+(2, 1, '2020-12-02 12:52:52'),
+(3, 1, '2020-12-02 14:16:31'),
+(4, 1, '2020-12-02 15:57:46'),
+(5, 1, '2020-12-03 06:53:18');
+
 -- --------------------------------------------------------
 
 --
@@ -340,6 +403,20 @@ CREATE TABLE `next_of_kin` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `notices`
+--
+
+CREATE TABLE `notices` (
+  `id` bigint(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `notice` text NOT NULL,
+  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
+  `date_updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `other_loans/overdrafts`
 --
 
@@ -351,6 +428,21 @@ CREATE TABLE `other_loans/overdrafts` (
   `monthly_repayment` varchar(255) DEFAULT NULL,
   `expiry_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Table Nullable if no pending loans';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `resignation_/_grievances`
+--
+
+CREATE TABLE `resignation_/_grievances` (
+  `id` bigint(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `reason(s)` text NOT NULL,
+  `has_been_approved` bit(1) NOT NULL DEFAULT b'0',
+  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
+  `date_updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -459,6 +551,14 @@ CREATE TABLE `user` (
   `date_updated` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `surname`, `email_address`, `employee_code`, `password`, `is_active`, `date_created`, `date_updated`) VALUES
+(1, 'Munyaradzi', 'Chikuruwo', 'roxnmugo@gmail.com', 'N0172515T', '$2a$10$aytcEyOaBmVjhjyOzaJWMeVDGp1t5e42NhXKXTFLjHj4RtoLCVaqS', b'1', '2020-12-02 11:26:19', '2020-12-02 11:26:19'),
+(2, 'Nigel', 'Chikuruwo', 'N0172515T@students.nust.ac.zw', 'N0172516T', '$2a$10$S/ZBNsaCGhhNBVg8ZTyaN.Oouenw7AUPZyqaTIqDfcPbjT9pxnko.', b'1', '2020-12-03 07:33:01', '2020-12-03 07:33:01');
+
 -- --------------------------------------------------------
 
 --
@@ -470,6 +570,16 @@ CREATE TABLE `user_role` (
   `user_id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_role`
+--
+
+INSERT INTO `user_role` (`id`, `user_id`, `role_id`) VALUES
+(1, 1, 1),
+(2, 1, 1),
+(3, 1, 1),
+(4, 2, 1);
 
 --
 -- Indexes for dumped tables
@@ -517,6 +627,12 @@ ALTER TABLE `activity_request_status`
 -- Indexes for table `activity_status`
 --
 ALTER TABLE `activity_status`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `annual_activity_calendar`
+--
+ALTER TABLE `annual_activity_calendar`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -608,10 +724,23 @@ ALTER TABLE `next_of_kin`
   ADD KEY `employee_id` (`employee_id`);
 
 --
+-- Indexes for table `notices`
+--
+ALTER TABLE `notices`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `other_loans/overdrafts`
 --
 ALTER TABLE `other_loans/overdrafts`
   ADD PRIMARY KEY (`pending_loans_id`);
+
+--
+-- Indexes for table `resignation_/_grievances`
+--
+ALTER TABLE `resignation_/_grievances`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `role`
@@ -708,10 +837,16 @@ ALTER TABLE `activity_status`
   MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `annual_activity_calendar`
+--
+ALTER TABLE `annual_activity_calendar`
+  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `business_unit`
 --
 ALTER TABLE `business_unit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `delegation_of_duty`
@@ -723,13 +858,13 @@ ALTER TABLE `delegation_of_duty`
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `employee_status`
@@ -741,7 +876,7 @@ ALTER TABLE `employee_status`
 -- AUTO_INCREMENT for table `job_title`
 --
 ALTER TABLE `job_title`
-  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `loan`
@@ -765,7 +900,7 @@ ALTER TABLE `loan_type`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `monthly_employee_payroll`
@@ -780,10 +915,22 @@ ALTER TABLE `next_of_kin`
   MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `notices`
+--
+ALTER TABLE `notices`
+  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `other_loans/overdrafts`
 --
 ALTER TABLE `other_loans/overdrafts`
   MODIFY `pending_loans_id` bigint(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `resignation_/_grievances`
+--
+ALTER TABLE `resignation_/_grievances`
+  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `role`
@@ -819,13 +966,13 @@ ALTER TABLE `staff_transfer`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user_role`
 --
 ALTER TABLE `user_role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -909,6 +1056,12 @@ ALTER TABLE `next_of_kin`
 --
 ALTER TABLE `other_loans/overdrafts`
   ADD CONSTRAINT `other_loans/overdrafts_ibfk_1` FOREIGN KEY (`pending_loans_id`) REFERENCES `loan_application` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `resignation_/_grievances`
+--
+ALTER TABLE `resignation_/_grievances`
+  ADD CONSTRAINT `resignation_/_grievances_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `salary_advance`
