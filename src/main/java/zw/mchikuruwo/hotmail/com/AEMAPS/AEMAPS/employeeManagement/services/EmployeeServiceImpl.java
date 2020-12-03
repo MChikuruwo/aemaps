@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dao.EmployeeRepository;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.exceptions.EmployeeAlreadyExistsException;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Employee;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.EmployeeStatus;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.JobTitle;
@@ -27,7 +28,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public String add(Employee employee) {
         employeeRepository.save(employee);
-        return "Employee has been added to system";
+        Optional<Employee> employeeFromDatabase = Optional.ofNullable(employeeRepository.findEmployeeByEmployeeCode(employee.getEmployeeCode()));
+        if (employeeFromDatabase.isPresent()) throw new EmployeeAlreadyExistsException("Employee Already exists!");
+
+        return "Employee has been successfully added.";
     }
 
     @Transactional

@@ -55,7 +55,7 @@ public class JobTitleController {
     }
 
     @PostMapping("/add/{business-unit-id}/{department-id}")
-    @ApiOperation(value = "Add a new job title. Takes reportingToId, businessUnitId and departmentId as path variables",
+    @ApiOperation(value = "Add a new job title. Takes businessUnitId and departmentId as path variables",
             response = ApiResponse.class)
     public ApiResponse addJobTitle(@RequestBody AddJobTitleDto jobTitleDto,
                                    @PathVariable("business-unit-id") Integer businessUnitId,

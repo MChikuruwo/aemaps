@@ -99,12 +99,14 @@ public class EmployeeController {
     public ApiResponse addNewEmployee(@RequestBody AddEmployeeDto employeeDto,
                                       @PathVariable("user-id") Integer userId,
                                       @PathVariable("employee-status-id") Long employeeStatusId,
-                                      @PathVariable("job-title-id") Long titleId){
+                                      @PathVariable("job-title-id") Long titleId
+                                      /*@PathVariable("residential-status-id")Long residentialStatusId*/){
 
         Employee employee = modelMapper.map(employeeDto, Employee.class);
         employee.setUserId(userService.getOne(userId).getId());
         employee.setEmployeeStatus(employeeStatusService.getOne(employeeStatusId));
         employee.setJobTitle(jobTitleService.getOne(titleId));
+        //employee.setResidentialStatus(employeeService.);
 
 
         return new ApiResponse(200, "SUCCESS", employeeService.add(employee));

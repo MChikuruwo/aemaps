@@ -6,7 +6,6 @@ public class AddUserDto {
     private String emailAddress;
     private String employeeCode;
 
-
     public String getName() {
         return name;
     }
@@ -38,4 +37,5 @@ public class AddUserDto {
     public void setEmployeeCode(String employeeCode) {
         this.employeeCode = employeeCode;
     }
+
 }

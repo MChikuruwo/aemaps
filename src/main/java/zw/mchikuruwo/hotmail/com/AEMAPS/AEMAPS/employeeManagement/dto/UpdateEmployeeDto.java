@@ -1,14 +1,17 @@
 package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto;
 
 
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.enums.Gender;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.enums.ResidentialStatus;
+
 public class UpdateEmployeeDto {
     private Long id;
     private Long userId;
     private String employeeCode;
     private String name;
     private String surname;
-    private Object gender;
-    private Object residentialStatus;
+    private Gender gender;
+    private ResidentialStatus residentialStatus;
     private String address1;
     private Double monthlySalary;
     private String accountNumber;
@@ -53,19 +56,19 @@ public class UpdateEmployeeDto {
         this.surname = surname;
     }
 
-    public Object getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(Object gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
-    public Object getResidentialStatus() {
+    public ResidentialStatus getResidentialStatus() {
         return residentialStatus;
     }
 
-    public void setResidentialStatus(Object residentialStatus) {
+    public void setResidentialStatus(ResidentialStatus residentialStatus) {
         this.residentialStatus = residentialStatus;
     }
 

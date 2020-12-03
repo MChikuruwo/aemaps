@@ -65,6 +65,20 @@ public class GlobalExceptionHandler {
 
     }
 
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(EmployeeAlreadyExistsException.class)
+    public ApiResponse handleEmployeeAlreadyExistsException (EmployeeAlreadyExistsException e) {
+        return new ApiResponse(400, e.getLocalizedMessage());
+
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(UserAlreadyExistsException.class)
+    public ApiResponse handleUserAlreadyExistsException (UserAlreadyExistsException e) {
+        return new ApiResponse(400, e.getLocalizedMessage());
+
+    }
+
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(Exception.class)

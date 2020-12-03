@@ -3,15 +3,38 @@
     "-//Hibernate/Hibernate Configuration DTD//EN"
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-  <session-factory>
-    <property name="connection.url">jdbc:mysql://localhost:3306/a_e_m_a_p_s</property>
-    <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-    <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.EmployeeEntity"/>
+    <session-factory>
+      <property name="connection.url">jdbc:mysql://localhost:3306/a_e_m_a_p_s</property>
+      <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Login"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Role"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.User"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.UserRole"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Employee"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.EmployeeStatus"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.JobTitle"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.BusinessUnit"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Department"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.SpouseDetails"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.NextOfKin"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.StaffTransfer"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Loan"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.LoanApplication"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.LoanType"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.SalaryAdvance"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.SalaryAdvanceApplication"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.DelegationOfDuty"/>
+        <mapping
+                class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.AnnualActivityCalendar"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Notices"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.ResignationGrievances"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.ResignationGrievancesEntity"/>
       <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.UserEntity"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.NoticesEntity"/>
       <!-- <property name="connection.username"/> -->
-    <!-- <property name="connection.password"/> -->
+      <!-- <property name="connection.password"/> -->
 
-    <!-- DB schema will be updated if needed -->
-    <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
-  </session-factory>
-</hibernate-configuration>
+      <!-- DB schema will be updated if needed -->
+      <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+    </session-factory>
+  </hibernate-configuration>

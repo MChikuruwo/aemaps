@@ -10,10 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dao.RoleRepository;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dao.UserRepository;
-import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.exceptions.EmailNotFoundException;
-import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.exceptions.EmployeeCodeNotFoundException;
-import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.exceptions.UserNotFoundException;
-import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.exceptions.UsersNotAvailableException;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.exceptions.*;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.MyUserPrincipal;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.User;
 
@@ -38,9 +35,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public String add(User user) {
+        Optional<User> userFromDatabase = Optional.ofNullable(userRepository.findUserByEmailAddress(user.getEmailAddress()));
+        if (userFromDatabase.isPresent()) throw new UserAlreadyExistsException("User Already exists!");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
-        return "User has been registered";
+        return "User credentials have been successfully sent";
     }
 
     @Transactional
@@ -103,10 +102,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
      @Override
     public User empCodeAuth(String employeeCode, String password) throws Exception{
-        //First get the user by email to check if the user exists
+        //First get the user by employee code to check if the user exists
         User user = userRepository.findUserByEmployeeCode(employeeCode);
         if (user == null){
-            //Display an error that the user with the email address was not found
+            //Display an error that the user with the employee code was not found
             throw new EntityNotFoundException("User with employeeCode: " + employeeCode + " not found");
         }
         //Check user entered password if it matches hashed password in database

@@ -13,10 +13,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.AddUserDto;
-import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.GenerateCredentialsDto;
-import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.LoginDto;
-import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.UpdateUserDto;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.*;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Login;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.User;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.api.ApiResponse;
@@ -76,19 +73,19 @@ public class UserController {
         return new ApiResponse(200, "SUCCESS", userService.delete(id));
     }
 
-    @PostMapping(value = "/register/{role-id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ApiOperation(value = "Register a user to the AEMAPS platform", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ApiResponse addUser(@RequestBody AddUserDto addUserDto, @PathVariable("role-id") Integer roleId, HttpServletRequest request){
+    @PostMapping(value = "/signUp/{role-id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Sign up a user to the AEMAPS platform with role-id as path variable", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ApiResponse signUpUser(@RequestBody AddUserDto addUserDto, @PathVariable("role-id") Integer roleId, HttpServletRequest request){
         User user = modelMapper.map(addUserDto, User.class);
 
         // Assign the role of the user
         user.setRoles(Collections.singleton(roleService.getOne(roleId)));
 
-        // Generate the password for user which needs to be reset
+        // Generate the password
         String password = generatePassword(user.getName());
 
         // Set the user password to the generated password
-        user.setPassword(password);
+         user.setPassword(password);
 
         // Set user active true by default
         user.setActive(true);
@@ -101,7 +98,7 @@ public class UserController {
         registrationEmail.setSubject("AEMAPS Platform");
         registrationEmail.setText(" Dear " + user.getName() + ", \n You have been registered as a  " + roleService.getOne(roleId).getName()
                 + " of the AEMAPS Platform.\n Email: " + user.getEmailAddress() +"\n Employee Code: "+user.getEmployeeCode() +"\n Password: " + password +
-                ". \n Please keep your password safe and reset it whenever it's necessary.");
+                " \n Please keep your temporary password safe and reset it as soon as possible.");
         registrationEmail.setFrom("mchikuruwo@hotmail.com");
 
         emailService.sendEmail(registrationEmail);
@@ -119,7 +116,7 @@ public class UserController {
         return generatedPassword;
     }
 
-    @PutMapping(value = "/edit", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/edit/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Updates a current user's details", produces = MediaType.APPLICATION_JSON_VALUE)
     public ApiResponse updateUser(@RequestBody UpdateUserDto updateUserDto, @PathVariable("id") Integer id){
         User user = modelMapper.map(updateUserDto, User.class);
@@ -127,7 +124,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/login/email")
-    @ApiOperation("Enables a user to login with email address and password")
+    @ApiOperation("Enables a user to login with company email address and password")
     public ResponseEntity loginWithEmailAndPassword(@RequestBody LoginDto accountCredentials) {
         Authentication authentication = authenticationManager.
                 authenticate(new UsernamePasswordAuthenticationToken(
@@ -157,16 +154,16 @@ public class UserController {
 
     @PostMapping(value = "/login/employeeCode")
     @ApiOperation("Enables a user to login with employee code and password")
-    public ResponseEntity loginWithEmployeeCodeAndPassword(@RequestBody LoginDto accountCredentials) {
-        Authentication authentication1 = authenticationManager.
+    public ResponseEntity loginWithEmployeeCodeAndPassword(@RequestBody Login1Dto accountCredentials) {
+        Authentication authentication = authenticationManager.
                 authenticate(new UsernamePasswordAuthenticationToken(
                         accountCredentials.getEmployeeCode(),
                         accountCredentials.getPassword()));
-        SecurityContextHolder.getContext().setAuthentication(authentication1);
-        String jwt = jwtTokenProvider.generateToken(authentication1);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        String jwt = jwtTokenProvider.generateToken(authentication);
         //Check if the authentication was successful. If it is, then return the details of the user
         ApiResponse response;
-        if (authentication1.isAuthenticated()){
+        if (authentication.isAuthenticated()){
             User authenticatedUser = userService.findByEmployeeCode(accountCredentials.getEmployeeCode());
 
             // Log user login in database
@@ -198,9 +195,9 @@ public class UserController {
 
         SimpleMailMessage generatedCredentialsEmail = new SimpleMailMessage();
         generatedCredentialsEmail.setTo(user.getEmailAddress());
-        generatedCredentialsEmail.setSubject("AEMAPS Platform");
+        generatedCredentialsEmail.setSubject("AEMAPS-Password Reset");
         generatedCredentialsEmail.setText(" Dear " + user.getName() + " Your new credentials are as follows: \n Email: " + user.getEmailAddress() +"\n Password: " + password +
-                ". \n Please keep your password safe and reset it whenever it's necessary.");
+                ". \n Please keep your temporary password safe and reset it as soon as possible.");
         generatedCredentialsEmail.setFrom("mchikuruwo@hotmail.com");
 
         emailService.sendEmail(generatedCredentialsEmail);

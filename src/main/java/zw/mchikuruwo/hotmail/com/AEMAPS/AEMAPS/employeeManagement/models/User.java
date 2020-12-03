@@ -21,7 +21,6 @@ public class User {
     private Timestamp dateCreated;
     private Timestamp dateUpdated;
 
-
     private Set<Role> roles;
 
     @Id
@@ -127,6 +126,7 @@ public class User {
                 Objects.equals(name, user.name) &&
                 Objects.equals(surname, user.surname) &&
                 Objects.equals(emailAddress, user.emailAddress) &&
+                Objects.equals(employeeCode, user.employeeCode) &&
                 Objects.equals(password, user.password) &&
                 Objects.equals(isActive, user.isActive) &&
                 Objects.equals(dateCreated, user.dateCreated) &&
@@ -135,7 +135,7 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, emailAddress, password, isActive, dateCreated, dateUpdated);
+        return Objects.hash(id, name, surname, emailAddress,employeeCode, password, isActive, dateCreated, dateUpdated);
     }
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

@@ -1,15 +1,15 @@
 package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto;
 
-public class LoginDto {
-    private String emailAddress;
+public class Login1Dto {
+    private String employeeCode;
     private String password;
 
-    public String getEmailAddress() {
-        return emailAddress;
+    public String getEmployeeCode() {
+        return employeeCode;
     }
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+    public void setEmployeeCode(String employeeCode) {
+        this.employeeCode = employeeCode;
     }
 
     public String getPassword() {
