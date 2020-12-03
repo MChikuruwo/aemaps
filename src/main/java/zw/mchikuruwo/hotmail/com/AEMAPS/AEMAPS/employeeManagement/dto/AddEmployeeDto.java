@@ -10,6 +10,7 @@ public class AddEmployeeDto {
     private String name;
     private String surname;
     private Gender gender;
+    private String mobileNumber;
     private ResidentialStatus residentialStatus;
     private String address1;
     private Double monthlySalary;
@@ -45,6 +46,14 @@ public class AddEmployeeDto {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
     }
 
     public ResidentialStatus getResidentialStatus() {

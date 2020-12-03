@@ -19,6 +19,7 @@ public class Employee {
     private String name;
     private String surname;
     private Gender gender;
+    private String mobileNumber;
     private ResidentialStatus residentialStatus;
     private String address1;
     private Double monthlySalary;
@@ -91,6 +92,15 @@ public class Employee {
         this.gender = gender;
     }
 
+    @Basic
+    @Column(name = "mobile_number", nullable = false, length = 13)
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
 
     @Basic
     @Enumerated(EnumType.STRING)
