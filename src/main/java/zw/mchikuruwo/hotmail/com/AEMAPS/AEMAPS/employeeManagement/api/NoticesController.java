@@ -6,9 +6,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.AddAnnualActivityCalendarDto;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.AddNoticeDto;
-import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.AnnualActivityCalendar;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.UpdateNoticesDto;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Notices;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.api.ApiResponse;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.NoticesService;
@@ -40,6 +39,12 @@ public class NoticesController {
         return new ApiResponse(200, "SUCCESS", noticesService.getOne(id));
 
     }
+    @DeleteMapping("/delete/{id}")
+    @ApiOperation(value = "Delete a notice by its id. Takes id as a path variable", response = ApiResponse.class)
+    public ApiResponse deleteNotice(@PathVariable("id") Long id){
+        return new ApiResponse(200, "SUCCESS", noticesService.delete(id));
+    }
+
 
     @PostMapping("/add")
     @ApiOperation(value = "Add a new notice to notice board", response = ApiResponse.class)
@@ -49,6 +54,12 @@ public class NoticesController {
 
         return new ApiResponse(200, "SUCCESS", noticesService.add(notice));
 
+    }
+    @PutMapping("/edit")
+    @ApiOperation(value = "Update an existing Notice", response = ApiResponse.class)
+    public ApiResponse updateNotice(@RequestBody UpdateNoticesDto noticesDto){
+        Notices notice = modelMapper.map(noticesDto, Notices.class);
+        return new ApiResponse(200, "SUCCESS", noticesService.update(notice));
     }
 
     @GetMapping("/notice-by-title")

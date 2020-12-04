@@ -3,10 +3,8 @@ package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dao.AnnualActivityCalendarRepository;
-import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dao.NoticesRepository;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.AnnualActivityCalendar;
-import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Department;
-import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Notices;
+
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -26,6 +24,24 @@ public class AnnualActivityCalendarServiceImpl implements AnnualActivityCalendar
     public String add(AnnualActivityCalendar annualActivityCalendar) {
         annualActivityCalendarRepository.save(annualActivityCalendar);
         return "Activity has been successfully added";
+    }
+
+    @Override
+    public String update(AnnualActivityCalendar annualActivityCalendar) {
+        Optional<AnnualActivityCalendar> activityFromDatabase = annualActivityCalendarRepository.findById(annualActivityCalendar.getId());
+        if (!activityFromDatabase.isPresent()) throw new EntityNotFoundException("Activity not found!");
+        annualActivityCalendarRepository.save(annualActivityCalendar);
+        return "Activity with ID " + annualActivityCalendar.getId() + " has been successfully updated";
+    }
+
+    @Override
+    public String delete(Long id) {
+        Optional<AnnualActivityCalendar> activityToDelete = annualActivityCalendarRepository.findById(id);
+        if (!activityToDelete.isPresent()){
+            throw new EntityNotFoundException("Activity with ID " + id + " not found! ");
+        }
+        annualActivityCalendarRepository.deleteById(id);
+        return "Activity has been successfully deleted";
     }
 
     @Override

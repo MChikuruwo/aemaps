@@ -26,6 +26,23 @@ public class NoticesServiceImpl implements NoticesService{
     }
 
     @Override
+    public String update(Notices notice) {
+        Optional<Notices> noticeFromDatabase = noticesRepository.findById(notice.getId());
+        if (!noticeFromDatabase.isPresent()) throw new EntityNotFoundException("Notice not found!");
+        noticesRepository.save(notice);
+        return "Notice with ID " + notice.getId() + " has been successfully updated";
+    }
+
+    @Override
+    public String delete(Long id) {
+        Optional<Notices> noticeToDelete = noticesRepository.findById(id);
+        if (!noticeToDelete.isPresent()){
+            throw new EntityNotFoundException("Notice with ID " + id + " does not exist");
+        }
+        noticesRepository.deleteById(id);
+        return "Notice has been successfully deleted";
+    }
+    @Override
     public List<Notices> getAll() {
         return noticesRepository.findAll();
     }
