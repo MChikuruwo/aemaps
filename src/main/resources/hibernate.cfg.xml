@@ -24,13 +24,11 @@
       <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.SalaryAdvance"/>
       <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.SalaryAdvanceApplication"/>
       <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.DelegationOfDuty"/>
-        <mapping
-                class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.AnnualActivityCalendar"/>
+        <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.AnnualActivityCalendar"/>
       <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Notices"/>
       <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.ResignationGrievances"/>
-      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.ResignationGrievancesEntity"/>
-      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.UserEntity"/>
-      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.NoticesEntity"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.AnnualActivityCalendar"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.AnnualActivityCategory"/>
       <!-- <property name="connection.username"/> -->
       <!-- <property name="connection.password"/> -->
 

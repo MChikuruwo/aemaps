@@ -17,6 +17,7 @@ public class Notices{
     private Timestamp dateUpdated;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     public Long getId() {
         return id;

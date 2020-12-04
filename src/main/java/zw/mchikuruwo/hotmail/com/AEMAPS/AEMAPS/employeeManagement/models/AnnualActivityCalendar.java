@@ -9,13 +9,15 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "annual_activity_calendar", schema = "a_e_m_a_p_s")
-public class AnnualActivityCalendar{
+public class AnnualActivityCalendar {
     private Long id;
     private String activity;
     private Date activityDay;
     private Timestamp dateUpdated;
+    private AnnualActivityCategory activityCategory;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     public Long getId() {
         return id;
@@ -67,5 +69,15 @@ public class AnnualActivityCalendar{
     @Override
     public int hashCode() {
         return Objects.hash(id, activity, activityDay, dateUpdated);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "activity_category_id", referencedColumnName = "id", nullable = false)
+    public AnnualActivityCategory getActivityCategory() {
+        return activityCategory;
+    }
+
+    public void setActivityCategory(AnnualActivityCategory annualActivityCategory) {
+        this.activityCategory = annualActivityCategory;
     }
 }

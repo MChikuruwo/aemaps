@@ -11,6 +11,7 @@ import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.UpdateAnnu
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.AnnualActivityCalendar;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.api.ApiResponse;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.AnnualActivityCalendarService;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.AnnualActivityCategoryService;
 
 @RestController
 @CrossOrigin
@@ -19,11 +20,13 @@ import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.Annua
 public class AnnualActivityCalendarController {
 
     private final AnnualActivityCalendarService annualActivityCalendarService;
+    private final AnnualActivityCategoryService annualActivityCategoryService;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public AnnualActivityCalendarController(AnnualActivityCalendarService annualActivityCalendarService, ModelMapper modelMapper) {
+    public AnnualActivityCalendarController(AnnualActivityCalendarService annualActivityCalendarService,AnnualActivityCategoryService annualActivityCategoryService ,ModelMapper modelMapper) {
         this.annualActivityCalendarService = annualActivityCalendarService;
+        this.annualActivityCategoryService = annualActivityCategoryService;
         this.modelMapper = modelMapper;
     }
 
@@ -40,11 +43,13 @@ public class AnnualActivityCalendarController {
 
     }
 
-    @PostMapping("/add")
+    @PostMapping("/add/{category-id}")
     @ApiOperation(value = "Add a new activity to calendar", response = ApiResponse.class)
-    public ApiResponse addJobCalendarActivity(@RequestBody AddAnnualActivityCalendarDto annualActivityCalendarDto){
+    public ApiResponse addJobCalendarActivity(@RequestBody AddAnnualActivityCalendarDto annualActivityCalendarDto,
+                                              @PathVariable("category-id") Long categoryId){
 
         AnnualActivityCalendar annualActivityCalendar = modelMapper.map(annualActivityCalendarDto, AnnualActivityCalendar.class);
+        annualActivityCalendar.setActivityCategory(annualActivityCategoryService.getOne(categoryId));
 
 
         return new ApiResponse(200, "SUCCESS", annualActivityCalendarService.add(annualActivityCalendar));
