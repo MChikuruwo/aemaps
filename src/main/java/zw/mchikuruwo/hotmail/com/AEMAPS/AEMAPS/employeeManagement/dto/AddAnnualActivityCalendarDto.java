@@ -2,7 +2,7 @@ package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto;
 
 import java.sql.Date;
 
-public class AddAnnualActivityCalendar {
+public class AddAnnualActivityCalendarDto {
     private String activity;
     private Date activityDay;
 

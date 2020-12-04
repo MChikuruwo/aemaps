@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dao.AnnualActivityCalendarRepository;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dao.NoticesRepository;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.AnnualActivityCalendar;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Department;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Notices;
 
 import javax.persistence.EntityNotFoundException;
@@ -19,6 +20,12 @@ public class AnnualActivityCalendarServiceImpl implements AnnualActivityCalendar
     @Autowired
     public AnnualActivityCalendarServiceImpl(AnnualActivityCalendarRepository annualActivityCalendarRepository) {
         this.annualActivityCalendarRepository = annualActivityCalendarRepository;
+    }
+
+    @Override
+    public String add(AnnualActivityCalendar annualActivityCalendar) {
+        annualActivityCalendarRepository.save(annualActivityCalendar);
+        return "Activity has been successfully added";
     }
 
     @Override

@@ -6,6 +6,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.AddAnnualActivityCalendarDto;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.AddNoticeDto;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.AnnualActivityCalendar;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Notices;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.api.ApiResponse;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.NoticesService;
 
@@ -34,6 +38,16 @@ public class NoticesController {
     @ApiOperation(value = "Get one notice by its ID", response = ApiResponse.class)
     public ApiResponse getOneNoticeById(@PathVariable("id") Long id){
         return new ApiResponse(200, "SUCCESS", noticesService.getOne(id));
+
+    }
+
+    @PostMapping("/add")
+    @ApiOperation(value = "Add a new notice to notice board", response = ApiResponse.class)
+    public ApiResponse addNotice(@RequestBody AddNoticeDto noticeDto) {
+
+        Notices notice = modelMapper.map(noticeDto, Notices.class);
+
+        return new ApiResponse(200, "SUCCESS", noticesService.add(notice));
 
     }
 

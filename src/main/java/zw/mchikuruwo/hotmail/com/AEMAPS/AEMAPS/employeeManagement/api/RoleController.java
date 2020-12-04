@@ -6,6 +6,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.AddJobTitleDto;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.JobTitle;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.api.ApiResponse;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.RoleService;
 
@@ -37,6 +39,8 @@ public class RoleController {
         return new ApiResponse(200, "SUCCESS", roleService.getOne(id));
 
     }
+
+
 
     @GetMapping("/role-by-name")
     @ApiOperation(value = "Get one role by its name", response = ApiResponse.class)

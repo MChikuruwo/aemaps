@@ -1,5 +1,7 @@
 package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -44,6 +46,7 @@ public class AnnualActivityCalendar{
     }
 
     @Basic
+    @UpdateTimestamp
     @Column(name = "date_updated")
     public Timestamp getDateUpdated() {
         return dateUpdated;

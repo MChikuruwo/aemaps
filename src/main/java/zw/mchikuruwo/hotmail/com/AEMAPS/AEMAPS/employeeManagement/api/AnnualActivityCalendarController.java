@@ -6,6 +6,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.AddAnnualActivityCalendarDto;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.AnnualActivityCalendar;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.api.ApiResponse;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.AnnualActivityCalendarService;
 
@@ -35,6 +37,16 @@ public class AnnualActivityCalendarController {
     public ApiResponse getOneCalendarActivityById(@PathVariable("id") Long id){
         return new ApiResponse(200, "SUCCESS", annualActivityCalendarService.getOne(id));
 
+    }
+
+    @PostMapping("/add")
+    @ApiOperation(value = "Add a new activity to calendar", response = ApiResponse.class)
+    public ApiResponse addJobCalendarActivity(@RequestBody AddAnnualActivityCalendarDto annualActivityCalendarDto){
+
+        AnnualActivityCalendar annualActivityCalendar = modelMapper.map(annualActivityCalendarDto, AnnualActivityCalendar.class);
+
+
+        return new ApiResponse(200, "SUCCESS", annualActivityCalendarService.add(annualActivityCalendar));
     }
 
     @GetMapping("/activity-by-title")

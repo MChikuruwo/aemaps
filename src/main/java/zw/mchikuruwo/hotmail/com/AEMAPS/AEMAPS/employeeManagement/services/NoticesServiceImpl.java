@@ -20,6 +20,12 @@ public class NoticesServiceImpl implements NoticesService{
     }
 
     @Override
+    public String add(Notices notices) {
+        noticesRepository.save(notices);
+        return "Notice has been successfully added";
+    }
+
+    @Override
     public List<Notices> getAll() {
         return noticesRepository.findAll();
     }
@@ -28,7 +34,7 @@ public class NoticesServiceImpl implements NoticesService{
     public Notices getOne(Long id) {
         Optional<Notices> notice = noticesRepository.findById(id);
         if (!notice.isPresent()){
-            throw new EntityNotFoundException("Notice not found");
+            throw new EntityNotFoundException("Notice not found!");
         }
         return notice.get();
     }

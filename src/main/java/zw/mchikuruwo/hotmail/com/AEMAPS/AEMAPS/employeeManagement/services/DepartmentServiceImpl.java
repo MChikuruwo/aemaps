@@ -26,13 +26,13 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public String add(Department department) {
         departmentRepository.save(department);
-        return "Department has been added";
+        return "Department has been successfully added";
     }
 
     @Override
     public String update(Department department) {
         Optional<Department> departmentFromDatabase = departmentRepository.findById(department.getId());
-        if (!departmentFromDatabase.isPresent()) throw new EntityNotFoundException("Department does not exist");
+        if (!departmentFromDatabase.isPresent()) throw new EntityNotFoundException("Department does not exist!");
         departmentRepository.save(department);
         return "Department with ID " + department.getId() + " has been updated";
     }

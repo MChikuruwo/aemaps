@@ -1,5 +1,8 @@
 package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -45,6 +48,7 @@ public class ResignationGrievances{
     }
 
     @Basic
+    @CreationTimestamp
     @Column(name = "date_created")
     public Timestamp getDateCreated() {
         return dateCreated;
@@ -55,6 +59,7 @@ public class ResignationGrievances{
     }
 
     @Basic
+    @UpdateTimestamp
     @Column(name = "date_updated")
     public Timestamp getDateUpdated() {
         return dateUpdated;
