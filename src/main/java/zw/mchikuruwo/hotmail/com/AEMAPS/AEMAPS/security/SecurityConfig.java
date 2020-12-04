@@ -1,4 +1,4 @@
-package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.security;
+package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,7 +14,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.handler.ExceptionHandlerFilter;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.handler.ExceptionHandlerFilter;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.UserService;
 
 

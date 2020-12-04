@@ -1,4 +1,4 @@
-package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.exceptions;
+package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.exceptions;
 
 public final class UserNotFoundException extends RuntimeException{
 

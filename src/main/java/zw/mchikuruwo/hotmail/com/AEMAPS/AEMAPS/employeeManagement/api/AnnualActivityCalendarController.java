@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.AddAnnualActivityCalendarDto;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dto.UpdateAnnualActivityCalendarDto;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.AnnualActivityCalendar;
-import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.api.ApiResponse;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.api.ApiResponse;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.AnnualActivityCalendarService;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.services.AnnualActivityCategoryService;
 
@@ -44,7 +44,7 @@ public class AnnualActivityCalendarController {
     }
 
     @PostMapping("/add/{category-id}")
-    @ApiOperation(value = "Add a new activity to calendar", response = ApiResponse.class)
+    @ApiOperation(value = "Add a new activity to calendar taking category-id as path variable", response = ApiResponse.class)
     public ApiResponse addJobCalendarActivity(@RequestBody AddAnnualActivityCalendarDto annualActivityCalendarDto,
                                               @PathVariable("category-id") Long categoryId){
 

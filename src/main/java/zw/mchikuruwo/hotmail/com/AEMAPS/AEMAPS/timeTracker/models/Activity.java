@@ -1,0 +1,138 @@
+package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.models;
+
+import org.hibernate.annotations.UpdateTimestamp;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Employee;
+
+import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.Objects;
+
+@Entity
+@Table(name = "activity", schema = "a_e_m_a_p_s")
+public class Activity {
+    private Long id;
+    private String name;
+    private String description;
+    private Timestamp startTime;
+    private Timestamp endTime;
+    private Timestamp dateUpdated;
+    private Employee employee;
+    private ActivityImportance activityImportance;
+    private ActivityStatus activityStatus;
+    private ActivityRequests activityRequests;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Basic
+    @Column(name = "name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Basic
+    @Column(name = "description")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Basic
+    @Column(name = "start_time")
+    public Timestamp getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Timestamp startTime) {
+        this.startTime = startTime;
+    }
+
+    @Basic
+    @Column(name = "end_time")
+    public Timestamp getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Timestamp endTime) {
+        this.endTime = endTime;
+    }
+
+    @Basic
+    @UpdateTimestamp
+    @Column(name = "date_updated")
+    public Timestamp getDateUpdated() {
+        return dateUpdated;
+    }
+
+    public void setDateUpdated(Timestamp dateUpdated) {
+        this.dateUpdated = dateUpdated;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Activity that = (Activity) o;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(startTime, that.startTime) && Objects.equals(endTime, that.endTime) && Objects.equals(dateUpdated, that.dateUpdated);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description, startTime, endTime, dateUpdated);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "employee_id", referencedColumnName = "id", nullable = false)
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employeeByEmployeeId) {
+        this.employee = employeeByEmployeeId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "activity_importance", referencedColumnName = "id", nullable = false)
+    public ActivityImportance getActivityImportance() {
+        return activityImportance;
+    }
+
+    public void setActivityImportance(ActivityImportance activityImportanceByActivityImportance) {
+        this.activityImportance = activityImportanceByActivityImportance;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "activity_status", referencedColumnName = "id", nullable = false)
+    public ActivityStatus getActivityStatus() {
+        return activityStatus;
+    }
+
+    public void setActivityStatus(ActivityStatus activityStatusByActivityStatus) {
+        this.activityStatus = activityStatusByActivityStatus;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "activity_requests", referencedColumnName = "id", nullable = false)
+    public ActivityRequests getActivityRequests() {
+        return activityRequests;
+    }
+
+    public void setActivityRequests(ActivityRequests activityRequestsByActivityRequests) {
+        this.activityRequests = activityRequestsByActivityRequests;
+    }
+}

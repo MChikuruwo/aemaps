@@ -1,4 +1,4 @@
-package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.security;
+package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -7,7 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
-import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.api.ApiResponse;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.api.ApiResponse;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

@@ -1,4 +1,4 @@
-package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.security;
+package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

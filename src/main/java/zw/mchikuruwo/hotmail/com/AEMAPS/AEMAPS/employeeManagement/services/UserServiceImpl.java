@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dao.RoleRepository;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.dao.UserRepository;
-import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.exceptions.*;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.exceptions.*;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.MyUserPrincipal;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.User;
 

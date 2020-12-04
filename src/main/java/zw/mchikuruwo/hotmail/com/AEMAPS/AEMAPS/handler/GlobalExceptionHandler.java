@@ -1,12 +1,12 @@
-package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.handler;
+package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.handler;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.exceptions.*;
-import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.api.ApiResponse;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.exceptions.*;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.api.ApiResponse;
 
 
 import javax.persistence.EntityNotFoundException;

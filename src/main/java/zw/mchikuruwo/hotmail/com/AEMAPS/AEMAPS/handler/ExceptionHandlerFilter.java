@@ -1,11 +1,11 @@
-package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.handler;
+package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.handler;
 
 
 import com.google.gson.Gson;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.filter.OncePerRequestFilter;
-import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.exceptions.InvalidTokenException;
-import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.api.ApiResponse;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.exceptions.InvalidTokenException;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.api.ApiResponse;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;

@@ -1,4 +1,4 @@
-package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.config;
+package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

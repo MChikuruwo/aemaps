@@ -1,4 +1,4 @@
-package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.security;
+package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.security;
 
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;

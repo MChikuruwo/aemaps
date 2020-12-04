@@ -1,4 +1,4 @@
-package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.api;
+package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.api;
 
 import java.io.Serializable;
 
