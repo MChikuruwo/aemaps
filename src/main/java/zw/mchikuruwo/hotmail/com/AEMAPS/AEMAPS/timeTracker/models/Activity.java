@@ -1,25 +1,40 @@
 package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UpdateTimestamp;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Employee;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.converter.LocalDateTimeConverter;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.enums.ActivityImportance;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.enums.ActivityStatus;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.Set;
 
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "activity", schema = "a_e_m_a_p_s")
 public class Activity {
     private Long id;
     private String name;
     private String description;
-    private Timestamp startTime;
-    private Timestamp endTime;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+    private Duration duration;
     private Timestamp dateUpdated;
-    private Employee employee;
+    private Set<Employee> employee;
     private ActivityImportance activityImportance;
     private ActivityStatus activityStatus;
-    private ActivityRequests activityRequests;
+    private Set<ActivityRequests> activityRequests;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,23 +68,57 @@ public class Activity {
     }
 
     @Basic
+    @Convert(converter = LocalDateTimeConverter.class)
     @Column(name = "start_time")
-    public Timestamp getStartTime() {
+    public LocalDateTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Timestamp startTime) {
+    public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
     }
 
     @Basic
+    @Convert(converter = LocalDateTimeConverter.class)
     @Column(name = "end_time")
-    public Timestamp getEndTime() {
+    public LocalDateTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Timestamp endTime) {
+    public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
+    }
+
+    @Basic
+    @Column(name = "duration")
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
+    }
+
+    @Basic
+    @Enumerated(EnumType.STRING)
+    @Column(name = "activity_importance")
+    public ActivityImportance getActivityImportance() {
+        return activityImportance;
+    }
+
+    public void setActivityImportance(ActivityImportance activityImportance) {
+        this.activityImportance = activityImportance;
+    }
+
+    @Basic
+    @Enumerated(EnumType.STRING)
+    @Column(name = "activity_status")
+    public ActivityStatus getActivityStatus() {
+        return activityStatus;
+    }
+
+    public void setActivityStatus(ActivityStatus activityStatus) {
+        this.activityStatus = activityStatus;
     }
 
     @Basic
@@ -96,43 +145,23 @@ public class Activity {
         return Objects.hash(id, name, description, startTime, endTime, dateUpdated);
     }
 
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name = "employee_id", referencedColumnName = "id", nullable = false)
-    public Employee getEmployee() {
+    public Set<Employee> getEmployee() {
         return employee;
     }
 
-    public void setEmployee(Employee employeeByEmployeeId) {
-        this.employee = employeeByEmployeeId;
+    public void setEmployee(Set<Employee> employee) {
+        this.employee = employee;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "activity_importance", referencedColumnName = "id", nullable = false)
-    public ActivityImportance getActivityImportance() {
-        return activityImportance;
-    }
-
-    public void setActivityImportance(ActivityImportance activityImportanceByActivityImportance) {
-        this.activityImportance = activityImportanceByActivityImportance;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "activity_status", referencedColumnName = "id", nullable = false)
-    public ActivityStatus getActivityStatus() {
-        return activityStatus;
-    }
-
-    public void setActivityStatus(ActivityStatus activityStatusByActivityStatus) {
-        this.activityStatus = activityStatusByActivityStatus;
-    }
-
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name = "activity_requests", referencedColumnName = "id", nullable = false)
-    public ActivityRequests getActivityRequests() {
+    public Set<ActivityRequests> getActivityRequests() {
         return activityRequests;
     }
 
-    public void setActivityRequests(ActivityRequests activityRequestsByActivityRequests) {
-        this.activityRequests = activityRequestsByActivityRequests;
+    public void setActivityRequests(Set<ActivityRequests> activityRequests) {
+        this.activityRequests = activityRequests;
     }
 }

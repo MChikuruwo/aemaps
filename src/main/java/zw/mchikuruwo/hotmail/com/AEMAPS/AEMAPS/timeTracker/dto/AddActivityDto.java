@@ -1,12 +1,13 @@
 package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.dto;
 
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.enums.ActivityImportance;
+
 import java.sql.Timestamp;
 
 public class AddActivityDto {
     private String name;
     private String description;
-    private Timestamp startTime;
-    private Timestamp endTime;
+    private ActivityImportance activityImportance;
 
     public String getName() {
         return name;
@@ -24,19 +25,11 @@ public class AddActivityDto {
         this.description = description;
     }
 
-    public Timestamp getStartTime() {
-        return startTime;
+    public ActivityImportance getActivityImportance() {
+        return activityImportance;
     }
 
-    public void setStartTime(Timestamp startTime) {
-        this.startTime = startTime;
-    }
-
-    public Timestamp getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Timestamp endTime) {
-        this.endTime = endTime;
+    public void setActivityImportance(ActivityImportance activityImportance) {
+        this.activityImportance = activityImportance;
     }
 }

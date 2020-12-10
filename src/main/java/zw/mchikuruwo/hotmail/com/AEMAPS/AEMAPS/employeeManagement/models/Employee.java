@@ -4,10 +4,13 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.enums.Gender;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.enums.ResidentialStatus;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.models.Activity;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.models.ActivityRequests;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -28,6 +31,8 @@ public class Employee {
     private Timestamp dateUpdated;
     private EmployeeStatus employeeStatus;
     private JobTitle jobTitle;
+    private List<Activity> activities;
+    private List<ActivityRequests> activityRequests;
 
 
     @Id
@@ -208,5 +213,22 @@ public class Employee {
         this.accountNumber = accountNumber;
     }
 
+    @ManyToMany
+    @JoinColumn(name = "activities", referencedColumnName = "id")
+    public List<Activity> getActivities() {
+        return activities;
+    }
 
+    public void setActivities(List<Activity> activities) {
+        this.activities = activities;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "employee")
+    public List<ActivityRequests> getActivityRequests() {
+        return activityRequests;
+    }
+
+    public void setActivityRequests(List<ActivityRequests> activityRequests) {
+        this.activityRequests = activityRequests;
+    }
 }

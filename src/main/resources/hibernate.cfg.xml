@@ -38,6 +38,7 @@
       <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.models.ActivityRequestAction"/>
       <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.models.ActivityRequestStatus"/>
       <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.models.ActivityRequests"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.models.ActivityRequestsEntity"/>
       <!-- <property name="connection.username"/> -->
       <!-- <property name="connection.password"/> -->
 

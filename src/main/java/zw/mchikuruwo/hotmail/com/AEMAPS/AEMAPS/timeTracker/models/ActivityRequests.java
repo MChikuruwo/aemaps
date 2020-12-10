@@ -1,17 +1,27 @@
 package zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UpdateTimestamp;
 import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.Employee;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.enums.ActivityRequestAction;
+import zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.enums.ActivityRequestStatus;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "activity_requests", schema = "a_e_m_a_p_s")
 public class ActivityRequests {
     private Long id;
-    private Timestamp requestDate;
+    private LocalDateTime requestDate;
     private Employee employee;
     private Activity activity;
     private ActivityRequestAction activityRequestAction;
@@ -29,14 +39,35 @@ public class ActivityRequests {
     }
 
     @Basic
-    @UpdateTimestamp
     @Column(name = "request_date")
-    public Timestamp getRequestDate() {
+    public LocalDateTime getRequestDate() {
         return requestDate;
     }
 
-    public void setRequestDate(Timestamp requestDate) {
+    public void setRequestDate(LocalDateTime  requestDate) {
         this.requestDate = requestDate;
+    }
+
+    @Basic
+    @Enumerated(EnumType.STRING)
+    @Column(name = "activity_request_action")
+    public ActivityRequestAction getActivityRequestAction() {
+        return activityRequestAction;
+    }
+
+    public void setActivityRequestAction(ActivityRequestAction activityRequestAction) {
+        this.activityRequestAction = activityRequestAction;
+    }
+
+    @Basic
+    @Enumerated(EnumType.STRING)
+    @Column(name = "activity_request_status")
+    public ActivityRequestStatus getActivityRequestStatus() {
+        return activityRequestStatus;
+    }
+
+    public void setActivityRequestStatus(ActivityRequestStatus activityRequestStatus) {
+        this.activityRequestStatus = activityRequestStatus;
     }
 
     @Override
@@ -72,23 +103,4 @@ public class ActivityRequests {
         this.activity = activityByActivity;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "activity_request_action", referencedColumnName = "id", nullable = false)
-    public ActivityRequestAction getActivityRequestAction() {
-        return activityRequestAction;
-    }
-
-    public void setActivityRequestAction(ActivityRequestAction activityRequestActionByActivityRequestAction) {
-        this.activityRequestAction = activityRequestActionByActivityRequestAction;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "activity_request_status", referencedColumnName = "id", nullable = false)
-    public ActivityRequestStatus getActivityRequestStatus() {
-        return activityRequestStatus;
-    }
-
-    public void setActivityRequestStatus(ActivityRequestStatus activityRequestStatusByActivityRequestStatus) {
-        this.activityRequestStatus = activityRequestStatusByActivityRequestStatus;
-    }
 }
