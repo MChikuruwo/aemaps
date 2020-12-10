@@ -49,10 +49,10 @@ public class ActivityRequestController {
         return new ApiResponse(200, "SUCCESS", activityRequestService.makeAddActivityRequest(employeeId,activityId));
     }
 
-    @GetMapping("/add/{employee-id}/{activity-id}")
+    @GetMapping("/complete/{employee-id}/{activity-id}")
     @ApiOperation(value = "Get complete activity request. Takes employee and activity Ids as path variables", response = ApiResponse.class)
     public ApiResponse getCompleteActivityRequests(@PathVariable("employee-id")Long employeeId,
-                                              @PathVariable("activity-id")Long activityId){
+                                                   @PathVariable("activity-id")Long activityId){
         employeeService.getOne(employeeId);
         activityService.findActivityById(activityId);
 
