@@ -30,15 +30,14 @@
       <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.AnnualActivityCalendar"/>
       <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.employeeManagement.models.AnnualActivityCategory"/>
       <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.models.Activity"/>
-      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.models.ActivityImportance"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.enums.ActivityImportance"/>
       <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.models.ActivityRequests"/>
-      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.models.ActivityStatus"/>
-      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.models.EmployeeEntity"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.enums.ActivityStatus"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.enums.ActivityRequestAction"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.enums.ActivityRequestStatus"/>
       <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.models.ActivityEntity"/>
-      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.models.ActivityRequestAction"/>
-      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.models.ActivityRequestStatus"/>
-      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.models.ActivityRequests"/>
-      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.models.ActivityRequestsEntity"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.models.ActivityEmployee"/>
+      <mapping class="zw.mchikuruwo.hotmail.com.AEMAPS.AEMAPS.timeTracker.models.EmployeeEntity"/>
       <!-- <property name="connection.username"/> -->
       <!-- <property name="connection.password"/> -->
 
